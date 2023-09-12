@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import background from './1.jpg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -30,6 +31,7 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+  const[alart,setAlert]=useState("")
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
@@ -41,12 +43,41 @@ const Signup = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your signup logic here
-    // For demonstration, we'll just show a success message
-    setShowSuccessMessage(true);
+  
+    if (formData.confirmPassword !== formData.password) {
+      setAlert("Password does not match");
+      setShowSuccessMessage(true);
+    } else {
+      try {
+        // Check if the email already exists
+        const emailExists = await axios.get(`http://localhost:3000/users?email=${formData.email}`);
+  
+        // Check if the phone number already exists
+        const phoneNumberExists = await axios.get(`http://localhost:3000/users?phoneNumber=${formData.phoneNumber}`);
+  
+        if (emailExists.data.length > 0) {
+          // Email already exists, show an error toast
+          setAlert("Email already exists. Please use a different email.");
+          setShowSuccessMessage(true);
+        } else if (phoneNumberExists.data.length > 0) {
+          // Phone number already exists, show an error toast
+          setAlert("Phone number already exists. Please use a different phone number.");
+          setShowSuccessMessage(true);
+        } else {
+          // Email and phone number don't exist, proceed with registration
+          await axios.post("http://localhost:3000/users", formData);
+          setAlert("Sign up successful!");
+          setShowSuccessMessage(true);
+        }
+      } catch (error) {
+        // Handle any other errors here
+        console.error(error);
+      }
+    }
   };
+  
 
   const nav = useNavigate();
 
@@ -80,7 +111,7 @@ const Signup = () => {
           {showSuccessMessage && (
             <Alert status="success" mb={4}mt={4} bg='orange'>
               <AlertIcon />
-              <AlertTitle>Sign up successful!</AlertTitle>
+              <AlertTitle>{alart}</AlertTitle>
               <CloseButton onClick={() => setShowSuccessMessage(false)} />
             </Alert>
           )}
