@@ -15,12 +15,15 @@ import {
   AlertTitle,
   CloseButton,
   Flex,
+  Toast,
+  useToast,
 } from '@chakra-ui/react';
-import background from './1.jpg';
+import background from './2.jpg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Signup = () => {
+  const toast=useToast();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,8 +33,11 @@ const Signup = () => {
     country: '',
     password: '',
     confirmPassword: '',
+    cart:[],
+    orders: []
   });
   const[alart,setAlert]=useState("")
+  const nav = useNavigate();
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
@@ -67,9 +73,21 @@ const Signup = () => {
           setShowSuccessMessage(true);
         } else {
           // Email and phone number don't exist, proceed with registration
-          await axios.post("http://localhost:3000/users", formData);
+          
+          console.log(formData)
+          await axios.post("http://localhost:3000/users/", formData)
           setAlert("Sign up successful!");
+          toast({
+            title: 'Sign up successful!.',
+            status: 'success',
+            duration: 2000,
+            isClosable: true,
+          });
           setShowSuccessMessage(true);
+          setTimeout(()=>{
+            nav("/login")
+          },3000)
+          
         }
       } catch (error) {
         // Handle any other errors here
@@ -79,8 +97,7 @@ const Signup = () => {
   };
   
 
-  const nav = useNavigate();
-
+ 
   return (
     <ChakraProvider>
       <CSSReset />

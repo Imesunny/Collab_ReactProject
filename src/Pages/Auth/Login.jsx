@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -14,15 +14,15 @@ import {
   AlertTitle,
   AlertIcon,
   Alert,
-  Flex, // Import Center component
+  Flex,
 } from '@chakra-ui/react';
-import background from './1.jpg';
+import background from './2.jpg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { motion } from 'framer-motion';
 
 const Login = () => {
-  const nav=useNavigate()
+  const nav = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -42,7 +42,6 @@ const Login = () => {
       setErrorText('Password are required');
       return;
     }
-
 
     try {
       // Check if the email exists
@@ -75,92 +74,113 @@ const Login = () => {
       setErrorText('Login failed. Please try again.');
     }
   };
+
   return (
-    <ChakraProvider >
+    <ChakraProvider>
       <CSSReset />
-      <Box style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover', // Adjust this property as needed
-        backgroundRepeat: 'no-repeat', // Adjust this property as needed
-        backgroundPosition: 'center', // Adjust this property as needed
-      }}
-        minH="100vh"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
         <Box
-          p={4}
-          bg="rgba(100, 100, 100, .9)"
-          borderRadius={4}
-          color='white'
-          className='main_box'
-          width='40%'
-          minW="40vh"
-
+          style={{
+            backgroundImage: `url(${background})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+          minH="100vh"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
         >
-          <Box textAlign="center">
-            <Heading color="#C68409">Login</Heading>
-          </Box>
-          {showErrorMessage && (
-            <Alert status="error" mt={9} backgroundColor='red'>
-              <AlertIcon />
-              <AlertTitle>{errorText}</AlertTitle>
-              <CloseButton onClick={() => setShowErrorMessage(false)} />
-            </Alert>
-          )}
-          {showSuccessMessage && (
-            <Alert status="success" mt={4} backgroundColor='green'>
-              <AlertIcon />
-              <AlertTitle >Login successful!</AlertTitle>
-              <CloseButton onClick={() => setShowSuccessMessage(false)} />
-            </Alert>
-          )}
-          <Box my={4} textAlign="left">
-            <form onSubmit={handleSubmit}>
-              <Stack spacing={4}>
-                <FormControl>
-                  <FormLabel>Email</FormLabel>
-                  <Input type="email" placeholder="Enter your email" 
-                  value={email}
-                  onChange={(e)=>setEmail(e.target.value)}/>
-                </FormControl>
-                <FormControl>
-                  <FormLabel>Password</FormLabel>
-                  <Input type="password" placeholder="Enter your password" 
-                   value={password}
-                   onChange={(e)=>setPassword(e.target.value)}/>
-                </FormControl>
-                <Center> {/* Wrap the button with the Center component */}
-                  <Button
-                    type="submit"
-                    bg="red"
-                    color="white"
-                    _hover={{ bg: 'gray' }}
-                    _active={{ bg: 'purple' }}
-                    width={200}
-                  >
-                    Log in
-                  </Button>
-
-                </Center>
-                <Center _hover={{ bg: 'gray' }}
-                  _active={{ bg: 'purple' }}>
-                  Forgot your Password
-                </Center>
-                <Center>
-                 <Flex flexDir='column'><div>Do not have an Account ?</div><button
-                onClick={()=> nav("/signup")} style={{color:'orange'}}> Create yours now.</button></Flex> </Center>
-
-
-              </Stack>
-            </form>
+          <Box
+            p={4}
+            bg="rgba(100, 100, 100, .7)"
+            borderRadius={4}
+            color="white"
+            className="main_box"
+            width="40%"
+            minW="40vh"
+          >
+            <Box textAlign="center">
+              <Heading color="#C68409">Login</Heading>
+            </Box>
+            {showErrorMessage && (
+              <Alert status="error" mt={9} backgroundColor="red">
+                <AlertIcon />
+                <AlertTitle>{errorText}</AlertTitle>
+                <CloseButton onClick={() => setShowErrorMessage(false)} />
+              </Alert>
+            )}
+            {showSuccessMessage && (
+              <Alert status="success" mt={4} backgroundColor="green">
+                <AlertIcon />
+                <AlertTitle>Login successful!</AlertTitle>
+                <CloseButton onClick={() => setShowSuccessMessage(false)} />
+              </Alert>
+            )}
+            <Box my={4} textAlign="left">
+              <motion.form
+                initial={{ x: '-100%' }}
+                animate={{ x: 0 }}
+                transition={{ duration: 0.5 }}
+                onSubmit={handleSubmit}
+              >
+                <Stack spacing={4}>
+                  <FormControl>
+                    <FormLabel>Email</FormLabel>
+                    <Input
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </FormControl>
+                  <FormControl>
+                    <FormLabel>Password</FormLabel>
+                    <Input
+                      type="password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </FormControl>
+                  <Center>
+                    <Button
+                      type="submit"
+                      bg="red"
+                      color="white"
+                      _hover={{ bg: 'gray' }}
+                      _active={{ bg: 'purple' }}
+                      width={200}
+                    >
+                      Log in
+                    </Button>
+                  </Center>
+                  <Center _hover={{ bg: 'gray' }} _active={{ bg: 'purple' }}>
+                    Forgot your Password
+                  </Center>
+                  <Center>
+                    <Flex flexDir="column">
+                      <div>Do not have an Account ?</div>
+                      <button
+                        onClick={() => nav('/signup')}
+                        style={{ color: 'orange' }}
+                      >
+                        Create yours now.
+                      </button>
+                    </Flex>
+                  </Center>
+                </Stack>
+              </motion.form>
+            </Box>
           </Box>
         </Box>
-      </Box>
-
+      </motion.div>
     </ChakraProvider>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
