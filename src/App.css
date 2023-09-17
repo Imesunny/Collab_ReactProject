@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,12 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.App {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(38,38,38);
+  /* background-color: rgb(0,0,38); */
+
 }
+

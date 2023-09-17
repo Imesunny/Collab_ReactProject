@@ -1,0 +1,57 @@
+/* .main_form_div {
+    margin: 10px auto;
+    padding: 25px;
+    width: 40%;
+    box-shadow: 0 0 5px;
+} */
+
+.model_signup {
+    margin: 10px auto;
+    padding: 25px;
+}
+
+.model_signup :focus{
+    outline: none;
+}
+
+.hover_text_color {
+    text-decoration: underline;
+}
+
+.hover_text_color:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.item_center {
+    display: flex;
+}
+
+.btn {
+    color: #c68409;
+    width: 100%;
+}
+
+.btn:hover {
+    color: black;
+    /* background-color: #c68409; */
+}
+
+.small_font {
+    font-size: small;
+}
+
+.item_display_corner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create_account_btn {
+    font-size: large;
+    text-decoration: underline;
+}
+
+.create_account_btn:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}

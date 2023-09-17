@@ -1,0 +1,36 @@
+
+.middleFlex{
+    font-family: 'Raleway', sans-serif;
+}
+
+.middleFlex h2{
+    font-size: 16px;
+    font-weight: 800;
+    padding: 10px 0;
+    color: white;
+}
+
+.middleFlex h2:hover{
+    cursor: pointer;
+    color: yellow;
+}
+
+.middleFlex li{
+    list-style-type: none;
+    font-size: small;
+    padding: 10px 0;
+    color: white;
+}
+
+.middleFlex li:hover{
+    cursor: pointer;
+    color: red;   
+}
+
+.newsletterfooter{
+    color: white;
+}
+
+.footerlast{
+    color: white;
+}
