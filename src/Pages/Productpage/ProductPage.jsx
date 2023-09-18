@@ -239,10 +239,10 @@ export default function ProductPage() {
                 <FilterDiscount setDiscountFilter={setDiscountFilter} />
               </Box>
               <Box>
-                <Heading size="md" color={"grey"}>
+                {/* <Heading size="md" color={"grey"}>
                   FILTER BY COLOR
-                </Heading>
-                <FilterColor setColorFilter={setColorFilter} />
+                </Heading> */}
+                {/* <FilterColor setColorFilter={setColorFilter} /> */}
               </Box>
             </Grid>
           </Box>

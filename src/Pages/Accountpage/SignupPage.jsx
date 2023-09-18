@@ -56,20 +56,11 @@ export const Signup = ({ onClose }) => {
     // console.log(">>>>>>>>>>>>>>>>>>>>");
     emailjs
       .sendForm(
-        "service_m3g8gtd",
-        "template_bfckf1l",
+        "service_1d89xnf",
+        "template_h557l5i",
         form.current,
-        "NfmCzzCkrTdkBOvHr"
+        "uK8ydhisF07eJ_x2i"
       )
-      // emailjs.sendForm('service_fkfregs', 'template_n8ly4bv', form.current, 'wfw69oML3MWqQ0Srh')
-      // emailjs.sendForm('sdasf', 'dsfsd', form.current, 'wfw69oML3MWqQ0Srh')
-      // emailjs
-      //   .sendForm(
-      //     "service_m3g8gtd",
-      //     "template_bfckf1l",
-      //     form.current,
-      //     "40ZEcegptxkkeCq57"
-      //   )
       .then(
         (result) => {
           console.log(result.text);

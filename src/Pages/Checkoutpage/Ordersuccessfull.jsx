@@ -17,7 +17,7 @@ export const Ordersuccessfull = ({setModalNumber }) => {
 
     return (
         <div style={{ color: "white" }}>
-            <marquee><Heading size='xl' mt='10px'>Congratulations <CheckCircleIcon w={8} h={8} color="green.500" /></Heading></marquee>
+            <Heading size='xl' mt='10px'>Congratulations <CheckCircleIcon w={8} h={8} color="green.500" /></Heading>
             <Heading size='md' my='5px'>Your order has been placed successfully</Heading>
             <Heading size='lg'> Order ID - {orderID} </Heading>
             <h6 style={{ fontSize: "small" }}>Please keep this Order ID for future reference </h6>
