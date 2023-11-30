@@ -23,8 +23,8 @@ experience for bicycles and accessories.
 
 ## Contributors
 1. Sunny Anand
-2. Hitesh 
-3. 
+2. Hitesh Sonawane
+3. Rohit Kharwar
 
 ## Deployment Link 
--[https://64e7ae187eb6d30b420f1d46--lucky-cupcake-e72a9a.netlify.app/]
+-[https://cycleshop-clone-2oox0gnw2-imesunny.vercel.app/]
